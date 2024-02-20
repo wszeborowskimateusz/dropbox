@@ -1,6 +1,6 @@
 class AttachmentsController < ApplicationController
   def index
-    @attachments = Attachment.where(id: organization_ids_for_attachments)
+    @attachments = Attachment.where(organization_id: organization_ids_for_attachments)
   end
 
   private
