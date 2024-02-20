@@ -3,7 +3,27 @@ class AttachmentsController < ApplicationController
     @attachments = Attachment.where(organization_id: organization_ids_for_attachments)
   end
 
+  def new
+    @attachment = Attachment.new
+  end
+
+  def create
+    # TODO: Control which organization to add to?
+    org_id = current_user.organizations.first.id
+
+    @attachment = Attachment.new(attachment_params.merge({ organization_id: org_id }))
+    if @attachment.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def attachment_params
+    params.require(:attachment).permit(:name)
+  end
 
   def organization_ids_for_attachments
     main_orgs = current_user.organizations

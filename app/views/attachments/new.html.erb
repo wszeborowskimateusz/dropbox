@@ -1,0 +1,17 @@
+<p class='font-bold text-lg p-3'>New attachment</p>
+<div class='p-3' >
+  <%= form_with model: @attachment do |form| %>
+    <div class='text-red-900'>
+      <% if form.object.errors.any? %>
+        <%form.object.errors.full_messages.each do |message| %>
+          <%= message %>
+        <%end%>
+      <%end%>
+    </div>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <%= form.button class: 'btn-primary mt-3' %>
+  <% end%>
+</div>

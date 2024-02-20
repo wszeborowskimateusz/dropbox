@@ -17,5 +17,7 @@
 #  organization_id  (organization_id => organizations.id)
 #
 class Attachment < ApplicationRecord
+  validates :name, presence: true
+
   belongs_to :organization
 end

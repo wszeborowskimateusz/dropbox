@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -12,8 +13,11 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%if !current_user.nil?%>
-      <p>Signed in as: <%= current_user.email%></p>
-      <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+      <div class='flex p-2 justify-end items-center'>
+        <p>Signed in as: <%= current_user.email%></p>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn-primary ml-3' %>
+      </div>
+      <hr/>
     <%end%>
     <%= yield %>
   </body>
