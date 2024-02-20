@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class='h-screen'>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%if !current_user.nil?%>
@@ -19,6 +19,8 @@
       </div>
       <hr/>
     <%end%>
-    <%= yield %>
+    <div class='prose mx-auto'>
+      <%= yield %>
+    </div>
   </body>
 </html>
