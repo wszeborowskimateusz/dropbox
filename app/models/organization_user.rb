@@ -22,5 +22,5 @@ class OrganizationUser < ApplicationRecord
   belongs_to :organization
   belongs_to :user
 
-  has_many :attachments, through: :organization_user
+  has_many :attachments, through: :organization
 end

@@ -1,0 +1,11 @@
+<div>Hello there</div>
+<div>
+  <ul>
+    <% @attachments.each do |attachment| %>
+      <li>
+        <p>Organization name: <%= attachment.organization.name %></p>
+        <p>Attachment name: <%= attachment.name %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

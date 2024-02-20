@@ -17,3 +17,5 @@ orange = california.children.create!(name: 'Orange')
 california.organization_users.create!(user: annca)
 orange.organization_users.create!(user: annorange)
 
+Attachment.create([{ name: 'California attachment 1', organization: california },
+                   { name: 'Orange attachment 1', organization: orange }])

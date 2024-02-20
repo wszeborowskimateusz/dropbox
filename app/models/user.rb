@@ -21,4 +21,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :organization_users, dependent: :destroy
+  has_many :organizations, through: :organization_users
+  has_many :attachments, through: :organizations
 end

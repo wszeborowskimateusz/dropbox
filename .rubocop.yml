@@ -1,0 +1,82 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - "lib/tasks/auto_annotate_models.rake"
+    - "db/schema.rb"
+    - "db/data_schema.rb"
+    - "bin/{bundle,rails,rake,setup,spring,webpack,webpack-dev-server,yarn}"
+    - "tmp/**/*"
+    - "config.ru"
+    - "config/boot.rb"
+  NewCops: enable
+  TargetRubyVersion: 3.2.2
+
+Layout/ArrayAlignment:
+  EnforcedStyle: with_first_element
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "db/seeds/*.rb"
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
+  Exclude:
+    - "db/migrate/*.rb"
+    - "lib/generators/**/*_generator.rb"
+  AllowedMethods:
+    - required_fields
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 15
+  Exclude:
+    - "config/routes.rb"
+    - "app/**/*.html.arb"
+    - "spec/**/*_spec.rb"
+    - "spec/factories/**/*.rb"
+    - "spec/support/shared_examples/**/*.rb"
+    - "config/environments/*.rb"
+    - "lib/tasks/*.rake"
+  AllowedMethods:
+    - class_methods
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "lib/generators/**/*_generator.rb"
+  AllowedMethods:
+    - required_fields
+
+Metrics/MethodLength:
+  CountAsOne: ["array", "method_call"]
+  Exclude:
+    - "db/migrate/**/*"
+    - "lib/generators/**/*_generator.rb"
+    - "spec/integration/api/models/**/*"
+  AllowedMethods:
+    - required_fields
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "lib/generators/**/*_generator.rb"
+  AllowedMethods:
+    - required_fields
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  Exclude:
+    - "Gemfile"
