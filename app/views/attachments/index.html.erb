@@ -6,9 +6,12 @@
 <div>
   <ul class='divide-y'>
     <% @attachments.each do |attachment| %>
-      <li>
+      <li class='mb-5 ml-3'>
         <p>Organization name: <%= attachment.organization.name %></p>
         <p>Attachment name: <%= attachment.name %></p>
+        <%if attachment.can_delete(current_user) %>
+          <%= button_to "Delete", attachment, method: :delete, class: 'btn-primary', data: {turbo_confirm: 'Are you sure?'} %>
+        <%end%>
       </li>
     <% end %>
   </ul>

@@ -19,6 +19,13 @@ class AttachmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @attachment = Attachment.find(params[:id])
+    @attachment.destroy
+
+    redirect_to root_path
+  end
+
   private
 
   def attachment_params
