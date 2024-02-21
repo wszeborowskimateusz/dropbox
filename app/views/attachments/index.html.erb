@@ -9,6 +9,18 @@
       <li class='mb-5 ml-3'>
         <p>Organization name: <%= attachment.organization.name %></p>
         <p>Attachment name: <%= attachment.name %></p>
+        <% if attachment.files.attached? %>
+          <div>
+            <p class='font-bold'>Files:</p>
+            <ul>
+              <% attachment.files.each do |file| %>
+                <li>
+                  <%= link_to file.blob.filename, url_for(file), class: 'text-underline', target: "_blank" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <%end%>
         <%if attachment.can_delete(current_user) %>
           <%= button_to "Delete", attachment, method: :delete, class: 'btn-primary', data: {turbo_confirm: 'Are you sure?'} %>
         <%end%>

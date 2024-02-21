@@ -12,6 +12,10 @@
       <%= form.label :name %>
       <%= form.text_field :name %>
     </div>
+    <div>
+      <%= form.label :files %>
+      <%= form.file_field :files, multiple: true %>
+    </div>
     <%= form.button class: 'btn-primary mt-3' %>
   <% end%>
 </div>

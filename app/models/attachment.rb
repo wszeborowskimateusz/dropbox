@@ -20,6 +20,7 @@ class Attachment < ApplicationRecord
   validates :name, presence: true
 
   belongs_to :organization
+  has_many_attached :files
 
   def can_delete(user)
     organization.id == user.organization.id

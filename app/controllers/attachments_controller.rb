@@ -28,7 +28,7 @@ class AttachmentsController < ApplicationController
   private
 
   def attachment_params
-    params.require(:attachment).permit(:name)
+    params.require(:attachment).permit(:name, files: [])
   end
 
   def organization_ids_for_attachments
