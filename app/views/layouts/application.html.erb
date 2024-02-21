@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class='h-screen'>
+  <body class='overflow-y-auto'>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%if !current_user.nil?%>

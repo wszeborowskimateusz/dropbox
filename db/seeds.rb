@@ -8,20 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-annca = User.create!(email: 'annca@example.com', password: '9ran1Ready')
-annny = User.create!(email: 'annny@example.com', password: '9ran1Ready')
-annorange = User.create!(email: 'annorange@example.com', password: '9ran1Ready')
-annventura = User.create!(email: 'annventura@example.com', password: '9ran1Ready')
-
 california = Organization.create!(name: 'California')
 new_york = Organization.create!(name: 'New York')
 orange = california.children.create!(name: 'Orange')
 ventura = california.children.create!(name: 'Ventura')
 
-california.organization_users.create!(user: annca)
-new_york.organization_users.create!(user: annny)
-orange.organization_users.create!(user: annorange)
-ventura.organization_users.create!(user: annventura)
+annca = User.create!(email: 'annca@example.com', password: '9ran1Ready', organization: california)
+annny = User.create!(email: 'annny@example.com', password: '9ran1Ready', organization: new_york)
+annorange = User.create!(email: 'annorange@example.com', password: '9ran1Ready', organization: orange)
+annventura = User.create!(email: 'annventura@example.com', password: '9ran1Ready', organization: ventura)
 
 Attachment.create([{ name: 'California attachment 1', organization: california },
                    { name: 'Orange attachment 1', organization: orange },

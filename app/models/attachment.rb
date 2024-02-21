@@ -22,7 +22,6 @@ class Attachment < ApplicationRecord
   belongs_to :organization
 
   def can_delete(user)
-    # TODO: How about other org users?
-    organization.id == user.organizations.first.id
+    organization.id == user.organization.id
   end
 end

@@ -8,8 +8,7 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    # TODO: Control which organization to add to?
-    org_id = current_user.organizations.first.id
+    org_id = current_user.organization.id
 
     @attachment = Attachment.new(attachment_params.merge({ organization_id: org_id }))
     if @attachment.save
@@ -33,14 +32,12 @@ class AttachmentsController < ApplicationController
   end
 
   def organization_ids_for_attachments
-    main_orgs = current_user.organizations
+    main_org = current_user.organization
     ids = []
 
-    main_orgs.each do |org|
-      ids << org.id
-      ids += get_parent_orgs_ids(org)
-      ids += get_children_org_ids(org)
-    end
+    ids << main_org.id
+    ids += get_parent_orgs_ids(main_org)
+    ids += get_children_org_ids(main_org)
 
     ids
   end
